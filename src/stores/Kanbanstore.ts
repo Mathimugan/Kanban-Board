@@ -158,6 +158,47 @@ export async function deleteTask(
   }
 }
 
+export async function moveTask(
+  taskId: Task["taskId"],
+  targetColumnId: Column["columnId"]
+) {
+  try {
+    // Step 1: Find the current column containing the task
+    const columnsSnap = await getDocs(collection(db, "columns"));
+    let currentTask: Task | null = null;
+    let currentColumnId: string | null = null;
+
+    for (const docSnap of columnsSnap.docs) {
+      const column = docSnap.data() as Column;
+      const task = column.tasks.find((t) => t.taskId === taskId);
+      if (task) {
+        currentTask = task;
+        currentColumnId = docSnap.id;
+        break;
+      }
+    }
+
+    if (!currentTask || !currentColumnId) {
+      console.error("Task not found in any column");
+      return;
+    }
+
+    // Step 2: Remove the task from the current column
+    await updateDoc(doc(db, "columns", currentColumnId), {
+      tasks: arrayRemove(currentTask),
+    });
+
+    // Step 3: Add the task to the end of the target column
+    await updateDoc(doc(db, "columns", targetColumnId), {
+      tasks: arrayUnion(currentTask),
+    });
+
+    console.log("Task moved successfully");
+  } catch (error) {
+    console.error("Error moving task:", error);
+  }
+}
+
 
 export default {
   
@@ -171,5 +212,6 @@ export default {
     updateColumn,
     addTaskToColumn,
     updateTask,
-    deleteTask
+    deleteTask,
+    moveTask
   };
