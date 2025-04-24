@@ -34,9 +34,8 @@
 import { onMounted, ref } from "vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
-
 import { taskFormSchema } from "../schemas"
-import kanbanStore from "../stores/KanbanStore";
+import KanbanStore from "../stores/KanbanStore";
 import { ACTIONS, type Column, type Task } from "../types";
 
 const emit = defineEmits<{
@@ -62,7 +61,7 @@ let validationSchema = toTypedSchema(taskFormSchema);
 
 function onSubmit(values: any) {
   if (props.action === ACTIONS.ADD_TASK) {
-    kanbanStore.addTaskToColumn(props.columnId, {
+    KanbanStore.addTaskToColumn(props.columnId, {
       name: values.name,
       description: values.description,
     });
@@ -73,7 +72,7 @@ function onSubmit(values: any) {
       description: values.description,
     };
 
-    kanbanStore.updateTask(props.columnId, updatedTask);
+    KanbanStore.updateTask(props.columnId, updatedTask);
   }
   emit("close-modal");
 }

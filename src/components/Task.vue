@@ -78,7 +78,7 @@ import {
 import Modal from "./common/Modal.vue";
 import TaskForm from "./TaskForm.vue";
 import { ref } from "vue";
-import kanbanStore from "../stores/KanbanStore";
+import KanbanStore from "../stores/KanbanStore";
 import DropZone from "./common/DropZone.vue";
 import Draggable from "./common/Draggable.vue";
 import { X , Pencil} from 'lucide-vue-next'
@@ -100,13 +100,13 @@ function toggleDeleteTaskModal() {
 }
 
 function deleteTask() {
-  kanbanStore.deleteTask(props.columnId, props.task.taskId);
+  KanbanStore.deleteTask(props.columnId, props.task.taskId);
   toggleDeleteTaskModal();
 }
 
 function onTaskDrop(transferData: TRANSFER_DATA) {
   if (transferData.type === TYPES.TASK && transferData.taskId) {
-    kanbanStore.moveTask(
+    KanbanStore.moveTask(
       transferData.taskId,
       props.columnId!,
       props.task.taskId

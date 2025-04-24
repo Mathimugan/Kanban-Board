@@ -45,7 +45,7 @@ import { registerFormSchema } from "../schemas"
 import { ref } from "vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
-import kanbanStore from "../stores/kanbanStore";
+import KanbanStore from "../stores/KanbanStore";
 import { useRouter } from "vue-router";
 const registerForm = ref();
 const loginError = ref("");
@@ -56,7 +56,7 @@ let validationSchema = toTypedSchema(registerFormSchema);
 async function onSubmit(values: { email: string; password: string }) {
   try {
 
-    await kanbanStore.login(values.email, values.password);
+    await KanbanStore.login(values.email, values.password);
     loginError.value = "";
     router.push("/home");
   } catch (error) {

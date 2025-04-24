@@ -38,14 +38,14 @@ import { ref } from "vue";
 import ColumnForm from "./ColumnForm.vue";
 import Modal from "../components/common/Modal.vue"
 import { ACTIONS} from "../types"
-import kanbanStore from "../stores/kanbanStore";
+import KanbanStore from "../stores/KanbanStore";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const isColumnModalActive = ref(false);
 async function onSubmit() {
   try {
   
-    await kanbanStore.logout();
+    await KanbanStore.logout();
     router.push("/login");
   } catch (error) {
     console.error("Login failed:", error);

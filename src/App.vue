@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import  { ColumnType } from "./types"; // Adjust the path to where ColumnType is defined
-import { getColumns,subscribeToColumns  } from "./stores/kanbanStore";
+
 import { RouterView } from "vue-router";
-const columns = ref<ColumnType[]>([]);
 </script>
 
 <template>

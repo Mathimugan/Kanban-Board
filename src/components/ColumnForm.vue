@@ -25,7 +25,7 @@
 </template>
 <script setup lang="ts">
 import { columnFormSchema } from "../schemas";
-import kanbanStore from "../stores/KanbanStore";
+import KanbanStore from "../stores/KanbanStore";
 import { ACTIONS, type Column } from "../types";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
@@ -52,9 +52,9 @@ let validationSchema = toTypedSchema(columnFormSchema);
 
 function onSubmit(values: any) {
   if (props.action === ACTIONS.ADD_COLUMN) {
-    kanbanStore.addColumn(values.name);
+    KanbanStore.addColumn(values.name);
   } else if (props.action === ACTIONS.UPDATE_COLUMN) {
-    kanbanStore.updateColumn({
+    KanbanStore.updateColumn({
       columnId: props.column?.columnId!,
       name: values.name,
     });

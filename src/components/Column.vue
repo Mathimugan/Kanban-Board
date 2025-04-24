@@ -84,7 +84,7 @@ import { ref } from "vue";
 import ColumnForm from "./ColumnForm.vue";
 import TaskForm from "./TaskForm.vue";
 import Modal from "./common/Modal.vue";
-import kanbanStore from "../stores/Kanbanstore"
+import KanbanStore from "../stores/KanbanStore";
 import Task from "./Task.vue";
 import { X , Plus, Pencil} from 'lucide-vue-next'
 const props = defineProps<{
@@ -99,7 +99,7 @@ function onDrop(transferData: TRANSFER_DATA) {
   if (transferData.type === TYPES.COLUMN && transferData.columnId) {
 
   } else if (transferData.type === TYPES.TASK && transferData.taskId) {
-    kanbanStore.moveTask(transferData.taskId, props.column.columnId!);
+    KanbanStore.moveTask(transferData.taskId, props.column.columnId!);
   }
 }
 
@@ -114,7 +114,7 @@ function setSelectedColumn(action: ACTIONS, column: Column) {
 
 function deleteColumn() {
   if (selectedColumn.value) {
-    kanbanStore.deleteColumn(selectedColumn.value?.columnId);
+    KanbanStore.deleteColumn(selectedColumn.value?.columnId);
   }
 }
 
