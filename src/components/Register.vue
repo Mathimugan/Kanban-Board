@@ -61,7 +61,7 @@ function onSubmit(values: { email: string; password: string }) {
         .catch(error => {
           registerSuccess.value = "User registration failed!";
     
-            // Your callback logic here
+         
         });
 }
 </script>

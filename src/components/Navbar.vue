@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col sm:flex-row justify-between items-center mt-10 px-2 mb-3 text-white">
-    <!-- Header Title -->
+
     <h1 class="font-bold text-2xl sm:text-3xl text-black mb-4 sm:mb-0">Kanban Board</h1>
 
-    <!-- Action Buttons (Add Column and Logout) -->
+   
     <div class="flex flex-wrap gap-4 sm:gap-5 sm:flex-nowrap items-center">
       <button
         class="text-sm sm:text-base font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary h-12 py-2 rounded-3xl px-4 sm:px-5"
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <!-- Column Modal -->
+
   <Modal
     :is-modal-active="isColumnModalActive"
     :heading="`${ACTIONS.ADD_COLUMN.split('_').join(' ')}`"
@@ -44,15 +44,13 @@ const router = useRouter();
 const isColumnModalActive = ref(false);
 async function onSubmit() {
   try {
-    // Optionally: set a loading state here
+  
     await kanbanStore.logout();
     router.push("/login");
   } catch (error) {
     console.error("Login failed:", error);
 
 
-  } finally {
-    // Optionally: unset loading state here
   }
 }
 </script>

@@ -36,7 +36,7 @@
     </Draggable>
   </DropZone>
 
-  <!-- Update Column Modal -->
+
   <Modal
     :is-modal-active="isUpdateColumnModalActive"
     :heading="`${ACTIONS.UPDATE_COLUMN.split('_').join(' ')}`"
@@ -49,7 +49,6 @@
     />
   </Modal>
 
-  <!-- Delete Column Modal -->
   <Modal
     :is-modal-active="isDeleteColumnModalActive"
     :heading="`${ACTIONS.DELETE_COLUMN.split('_').join(' ')}`"
@@ -64,7 +63,7 @@
     </div>
   </Modal>
 
-  <!-- Add Task Modal -->
+
   <Modal
     :is-modal-active="isTaskModalActive"
     :heading="`${ACTIONS.ADD_TASK.split('_').join(' ')}`"

@@ -8,9 +8,7 @@ import Column from "../components/Column.vue";
 const columns = ref<ColumnType[]>([]);
 
 onMounted(async () => {
-  // Initial load of columns
   columns.value = await getColumns();
-  // Set up Firestore listener for real-time updates
   subscribeToColumns((updatedColumns: ColumnType[]) => {
     columns.value = updatedColumns;  // Update columns whenever there's a change
   });
@@ -19,12 +17,12 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col w-full h-full">
-    <!-- Navbar Section -->
+  
     <Navbar :boards="STORE" @select-board="selectBoard" />
 
     <div class="border bg-white text-card-foreground shadow-none p-7 rounded-3xl px-4 sm:px-7 flex flex-col gap-8">
       
-      <!-- Columns Display -->
+  
       <div v-if="columns.length" class="flex-1 flex gap-4 px-2 sm:px-3 overflow-x-auto">
         <div class="flex gap-4 sm:gap-6 flex-nowrap w-full">
           <Column
@@ -35,27 +33,24 @@ onMounted(async () => {
           />
         </div>
       </div>
-
-      <!-- Message when no columns are present -->
-      <div v-else class="text-center text-gray-500">No board selected</div>
-      
+      <div v-else class="text-center text-gray-500">No board selected</div>  
     </div>
   </div>
 </template>
 
 <style scoped>
-/* Ensure responsive padding for the entire container */
+
 .sm\:px-7 {
   padding-left: 1.75rem;
   padding-right: 1.75rem;
 }
 
-/* Responsive overflow handling */
+
 .overflow-x-auto {
   overflow-x: auto;
 }
 
-/* Adjust column layout for smaller screens */
+
 @media (max-width: 640px) {
   .flex-1 {
     flex-grow: 1;

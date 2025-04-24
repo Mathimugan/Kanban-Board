@@ -7,7 +7,7 @@
         type: TYPES.TASK,
       }"
     >
-      <!-- Action Buttons (responsive layout) -->
+     
       <div class="flex justify-end gap-2 flex-wrap sm:flex-nowrap px-3 pt-3">
         <button
           class="font-bold px-2 py-1 bg-primary text-white rounded text-sm sm:text-base"
@@ -25,7 +25,7 @@
         </button>
       </div>
 
-      <!-- Task Content (Responsive layout for task name and description) -->
+  
       <div class="p-6 pt-0 flex flex-col gap-3 mt-1">
         <span class="font-bold text-lg sm:text-xl md:text-2xl">{{ task.name }}</span>
         <span class="text-sm text-gray-600 sm:text-base">{{ task.description }}</span>
@@ -33,7 +33,7 @@
     </Draggable>
   </DropZone>
 
-  <!-- Task Edit Modal -->
+
   <Modal
     :is-modal-active="isTaskModalActive"
     :heading="`${ACTIONS.UPDATE_TASK.split('_').join(' ')}`"
@@ -47,7 +47,7 @@
     />
   </Modal>
 
-  <!-- Task Delete Modal -->
+
   <Modal
     :is-modal-active="isDeleteTaskModalActive"
     :heading="`${ACTIONS.DELETE_TASK.split('_').join(' ')}`"
@@ -120,17 +120,17 @@ function onTaskDrop(transferData: TRANSFER_DATA) {
   background-color: #16a34a;
 }
 
-/* Make the action buttons and task content stack well on small screens */
+
 @media (max-width: 640px) {
   .text-sm {
-    font-size: 0.875rem; /* Slightly smaller font on mobile */
+    font-size: 0.875rem;
   }
 
   .flex-wrap {
     flex-wrap: wrap;
   }
 
-  /* Adjust the button size and margins on smaller screens */
+
   .w-full {
     width: 100%;
   }
@@ -146,7 +146,7 @@ function onTaskDrop(transferData: TRANSFER_DATA) {
   }
 
   .sm\:w-32 {
-    width: 8rem; /* Fixed width for buttons on larger screens */
+    width: 8rem; 
   }
 
   .sm\:flex-nowrap {

@@ -55,14 +55,13 @@ let validationSchema = toTypedSchema(registerFormSchema);
 
 async function onSubmit(values: { email: string; password: string }) {
   try {
-    // Optionally: set a loading state here
+
     await kanbanStore.login(values.email, values.password);
     loginError.value = "";
     router.push("/home");
   } catch (error) {
-    console.error("Login failed:", error);
+ 
 
-    // Optional: handle known Firebase errors for better UI feedback
     if (typeof error === "object" && error !== null && "code" in error) {
       const err = error as { code: string; message: string };
       switch (err.code) {
@@ -76,9 +75,7 @@ async function onSubmit(values: { email: string; password: string }) {
         
       }
     } 
-  } finally {
-    // Optionally: unset loading state here
-  }
+  } 
 }
 </script>
 <style scoped>
