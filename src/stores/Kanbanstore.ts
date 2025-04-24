@@ -78,6 +78,26 @@ export async function login(email: Registration["email"], password: Registration
           console.error("Error deleting column: ", e);
         }
       }
+
+export async function addTaskToColumn(
+  columnId: Column["columnId"],
+  payload: Pick<Task, "name" | "description">
+) {
+  const columnRef = doc(db, "columns", columnId);
+  const newTask = {
+    taskId: uuidv4(),
+    name: payload.name,
+    description: payload.description,
+  };
+
+  try {
+    await updateDoc(columnRef, {
+      tasks: arrayUnion(newTask),
+    });
+  } catch (e) {
+    console.error("Error adding task: ", e);
+  }
+}
 export default {
   
     login,
@@ -87,5 +107,6 @@ export default {
     addColumn,
     logout,
     deleteColumn,
-    updateColumn
+    updateColumn,
+    addTaskToColumn
   };
