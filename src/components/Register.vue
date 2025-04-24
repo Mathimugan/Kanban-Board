@@ -52,13 +52,13 @@ const router = useRouter();
 
 let validationSchema = toTypedSchema(registerFormSchema);
 function onSubmit(values: { email: string; password: string }) {
-    kanbanStore.register(values.email,values.password) .then(result => {
+    kanbanStore.register(values.email,values.password) .then(() => {
       registerSuccess.value = "User registered successfully!";
       setTimeout(() => {
       router.push("/login");
     }, 2000);
         })
-        .catch(error => {
+        .catch(() => {
           registerSuccess.value = "User registration failed!";
     
          
