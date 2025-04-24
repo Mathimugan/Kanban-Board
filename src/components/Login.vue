@@ -28,11 +28,16 @@
     <p v-if="loginError" class="text-red-600 text-center mt-2">
   {{ loginError }}
 </p></div>
-<div class="flex justify-center">
+<div class="flex justify-center gap-5">
+  <button
+  type="button" @click="navigateToRegister"
+  class="px-4 py-2 mt-5 bg-blue-500 text-white font-bold  rounded">
+  Register
+</button>
 <button
   type="submit"
   class="px-4 py-2 mt-5 bg-primary text-white font-bold   rounded">
-  Submit
+  Login
 </button>
 </div>
 
@@ -51,7 +56,9 @@ const registerForm = ref();
 const loginError = ref("");
 const router = useRouter();
 let validationSchema = toTypedSchema(registerFormSchema);
-
+function navigateToRegister() {
+  router.push("/register");
+}
 
 async function onSubmit(values: any) {
   try {
