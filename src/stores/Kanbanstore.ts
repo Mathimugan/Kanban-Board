@@ -56,11 +56,20 @@ export async function login(email: Registration["email"], password: Registration
           console.error("Error adding column: ", e);
         }
       }
+      export async function logout() {
+        try {
+          await signOut(auth);
+          console.log("User logged out successfully");
+        } catch (error) {
+          console.error("Error logging out:", error);
+        }
+      }
 export default {
   
     login,
     getColumns,
     subscribeToColumns,
     STORE,
-    addColumn
+    addColumn,
+    logout
   };
