@@ -45,10 +45,22 @@ export async function login(email: Registration["email"], password: Registration
           callback(columns); // Pass updated columns to the callback
         });
       }
+      export async function addColumn(name: Column["name"]) {
+        try {
+          const docRef = await addDoc(collection(db, "columns"), {
+            name,
+            tasks: [],
+          });
+          console.log("Column added with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding column: ", e);
+        }
+      }
 export default {
   
     login,
     getColumns,
     subscribeToColumns,
-    STORE
+    STORE,
+    addColumn
   };
