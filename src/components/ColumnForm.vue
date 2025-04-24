@@ -24,9 +24,9 @@
   </Form>
 </template>
 <script setup lang="ts">
-import { columnFormSchema } from "../schemas"
-import kanbanStore from "../stores/Kanbanstore"
-import { ACTIONS, type Column } from "../types"
+import { columnFormSchema } from "../schemas";
+import kanbanStore from "../stores/KanbanStore";
+import { ACTIONS, type Column } from "../types";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { onMounted, ref } from "vue";

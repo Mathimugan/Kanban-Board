@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getColumns, STORE, subscribeToColumns } from "../stores/kanbanStore";
 import { onMounted, ref } from "vue";
-import { ColumnType } from "../types/ColumnType";
+import { ColumnType } from "../types";
 import Navbar from "../components/Navbar.vue";
 import Column from "../components/Column.vue";
 
