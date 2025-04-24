@@ -78,8 +78,8 @@ import {
 import Modal from "./common/Modal.vue";
 import TaskForm from "./TaskForm.vue";
 import { ref } from "vue";
-import kanbanStore from "../stores/Kanbanstore";
-import DropZone from "./common/DropZone.vue"
+import kanbanStore from "../stores/KanbanStore";
+import DropZone from "./common/DropZone.vue";
 import Draggable from "./common/Draggable.vue";
 import { X , Pencil} from 'lucide-vue-next'
 
