@@ -30,9 +30,18 @@ export async function login(email: Registration["email"], password: Registration
         });
         return columns;
       }
-    
+      export function subscribeToColumns(callback: (columns: Column[]) => void) {
+        return onSnapshot(collection(db, "columns"), (snapshot) => {
+          const columns: Column[] = [];
+          snapshot.forEach((doc) => {
+            columns.push({ ...doc.data(), columnId: doc.id });
+          });
+          callback(columns); // Pass updated columns to the callback
+        });
+      }
 export default {
   
     login,
-    getColumns
+    getColumns,
+    subscribeToColumns
   };
