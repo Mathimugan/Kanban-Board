@@ -223,5 +223,6 @@ export default {
     addTaskToColumn,
     updateTask,
     deleteTask,
-    moveTask
+    moveTask,
+    register
   };
