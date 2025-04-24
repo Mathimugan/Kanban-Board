@@ -45,7 +45,7 @@ import { registerFormSchema } from "../schemas"
 import { ref } from "vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
-import kanbanStore from "../stores/kanbanStore";
+import kanbanStore from "../stores/Kanbanstore"
 import { useRouter } from "vue-router";
 const registerForm = ref();
 const loginError = ref("");
@@ -83,6 +83,6 @@ async function onSubmit(values: { email: string; password: string }) {
 </script>
 <style scoped>
 .bg-primary {
-  background-color: #16a34a;
+  background-color: #33ce6c;
 }
 </style>
