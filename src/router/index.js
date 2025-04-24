@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "../components/Login.vue";
-import Register from "../components/Register.vue";
-import Home from "../components/Home.vue";
+import Login from "../components/Login.vue"
+import Register from "../components/Register.vue"
+import Home from "../components/Home.vue"
 import { getAuth } from "firebase/auth";
 
 const auth = getAuth();
