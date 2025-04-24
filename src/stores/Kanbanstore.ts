@@ -7,7 +7,13 @@ import { getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,onAut
 import type { Column, Task,Registration } from "@/types";
 const auth = getAuth();
 let KEY = "KANBAN-STORE";
+export type Board = {
+  boardId: string;
+  name: string;
+  columns: Column[];
+};
 
+export const STORE = useLocalStorage<Board[]>(KEY, []);
 export async function login(email: Registration["email"], password: Registration["password"]) {
  
     try {
@@ -43,5 +49,6 @@ export default {
   
     login,
     getColumns,
-    subscribeToColumns
+    subscribeToColumns,
+    STORE
   };
