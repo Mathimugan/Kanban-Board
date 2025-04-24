@@ -29,7 +29,7 @@ export async function register(email:Registration["email"],password:Registration
 export async function login(email: Registration["email"], password: Registration["password"]) {
  
     try {
-      const userCredential = await createUserWithEmailAndPassword(getAuth(), email, password);
+      const userCredential = await signInWithEmailAndPassword(getAuth(), email, password);
      
       return userCredential; // Can return userCredential.user if you just need the user
     } catch (error) {
