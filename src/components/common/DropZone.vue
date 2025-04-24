@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { TRANSFER_DATA } from "@/types";
+import type { TRANSFER_DATA } from "../../types"; 
 
 const emit = defineEmits<{
   (e: "dropData", payload: TRANSFER_DATA): void;

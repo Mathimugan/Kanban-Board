@@ -41,16 +41,24 @@ export async function login(email: Registration['email'], password: Registration
         const querySnapshot = await getDocs(collection(db, "columns"));
         const columns: Column[] = [];
         querySnapshot.forEach((doc) => {
-      
-          columns.push({ ...doc.data(), columnId: doc.id });
+          const data = doc.data() as Omit<Column, "columnId">; // 👈 fix: assert Firestore doc shape
+          columns.push({
+            ...data,
+            columnId: doc.id,
+          });
         });
+      
         return columns;
       }
       export function subscribeToColumns(callback: (columns: Column[]) => void) {
         return onSnapshot(collection(db, "columns"), (snapshot) => {
           const columns: Column[] = [];
           snapshot.forEach((doc) => {
-            columns.push({ ...doc.data(), columnId: doc.id });
+            const data = doc.data() as Omit<Column, "columnId">;
+            columns.push({
+              ...data,
+              columnId: doc.id,
+            });
           });
           callback(columns); // Pass updated columns to the callback
         });

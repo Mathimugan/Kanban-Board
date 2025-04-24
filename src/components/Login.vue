@@ -53,7 +53,7 @@ const router = useRouter();
 let validationSchema = toTypedSchema(registerFormSchema);
 
 
-async function onSubmit(values: { email: string; password: string }) {
+async function onSubmit(values: any) {
   try {
 
     await KanbanStore.login(values.email, values.password);

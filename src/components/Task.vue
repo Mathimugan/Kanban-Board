@@ -108,8 +108,7 @@ function onTaskDrop(transferData: TRANSFER_DATA) {
   if (transferData.type === TYPES.TASK && transferData.taskId) {
     KanbanStore.moveTask(
       transferData.taskId,
-      props.columnId!,
-      props.task.taskId
+      props.columnId!
     );
   }
 }

@@ -20,7 +20,7 @@ onMounted(async () => {
 <template>
   <div class="flex flex-col w-full h-full">
   
-    <Navbar :boards="STORE" @select-board="selectBoard" />
+    <Navbar :boards="STORE"/>
 
     <div class="border bg-white text-card-foreground shadow-none p-7 rounded-3xl px-4 sm:px-7 flex flex-col gap-8">
       

@@ -51,7 +51,7 @@ const registerSuccess = ref("");
 const router = useRouter();
 
 let validationSchema = toTypedSchema(registerFormSchema);
-function onSubmit(values: { email: string; password: string }) {
+function onSubmit(values: any) {
   KanbanStore.register(values.email,values.password) .then(() => {
       registerSuccess.value = "User registered successfully!";
       setTimeout(() => {
