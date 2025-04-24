@@ -18,7 +18,7 @@ export async function login(email: Registration["email"], password: Registration
  
     try {
       const userCredential = await signInWithEmailAndPassword(getAuth(), email, password);
-      console.log("User logged in successfully", userCredential);
+     
       return userCredential; // Can return userCredential.user if you just need the user
     } catch (error) {
       throw error
@@ -59,7 +59,7 @@ export async function login(email: Registration["email"], password: Registration
       export async function logout() {
         try {
           await signOut(auth);
-          console.log("User logged out successfully");
+          
         } catch (error) {
           console.error("Error logging out:", error);
         }
@@ -120,7 +120,7 @@ export async function updateTask(columnId: Column["columnId"], updatedTask: Task
       tasks: updatedTasks,
     });
 
-    console.log("Task updated successfully");
+   
   } catch (error) {
     console.error("Error updating task:", error);
   }
@@ -152,7 +152,7 @@ export async function deleteTask(
       tasks: updatedTasks,
     });
 
-    console.log("Task deleted successfully");
+ 
   } catch (e) {
     console.error("Error deleting task: ", e);
   }
@@ -193,7 +193,7 @@ export async function moveTask(
       tasks: arrayUnion(currentTask),
     });
 
-    console.log("Task moved successfully");
+   
   } catch (error) {
     console.error("Error moving task:", error);
   }
