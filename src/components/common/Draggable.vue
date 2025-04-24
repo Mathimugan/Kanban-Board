@@ -10,7 +10,7 @@
 </template>
 <script setup lang="ts">
 import { type PropType } from "vue";
-import type { TRANSFER_DATA } from "@/types";
+import type { TRANSFER_DATA } from "../../types"
 
 const props = defineProps({
   transferData: {
@@ -23,7 +23,6 @@ function onDrag(e: DragEvent) {
   if (e.dataTransfer) {
     e.dataTransfer.dropEffect = "move";
     e.dataTransfer.effectAllowed = "move";
-
     e.dataTransfer.setData("payload", JSON.stringify(props.transferData));
   }
 }
