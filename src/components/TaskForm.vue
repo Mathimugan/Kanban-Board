@@ -36,7 +36,7 @@ import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
 
 import { taskFormSchema } from "../schemas"
-import kanbanStore from "../stores/Kanbanstore"
+import kanbanStore from "../stores/KanbanStore";
 import { ACTIONS, type Column, type Task } from "../types";
 
 const emit = defineEmits<{
