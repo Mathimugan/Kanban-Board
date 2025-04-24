@@ -64,6 +64,20 @@ export async function login(email: Registration["email"], password: Registration
           console.error("Error logging out:", error);
         }
       }
+
+      export async function updateColumn(payload: Pick<Column, "name" | "columnId">) {
+        const columnRef = doc(db, "columns", payload.columnId);
+        await updateDoc(columnRef, {
+          name: payload.name,
+        });
+      }
+      export async function deleteColumn(columnId: Column["columnId"]) {
+        try {
+          await deleteDoc(doc(db, "columns", columnId));
+        } catch (e) {
+          console.error("Error deleting column: ", e);
+        }
+      }
 export default {
   
     login,
@@ -71,5 +85,7 @@ export default {
     subscribeToColumns,
     STORE,
     addColumn,
-    logout
+    logout,
+    deleteColumn,
+    updateColumn
   };
