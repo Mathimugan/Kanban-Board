@@ -98,6 +98,67 @@ export async function addTaskToColumn(
     console.error("Error adding task: ", e);
   }
 }
+
+export async function updateTask(columnId: Column["columnId"], updatedTask: Task) {
+  const columnRef = doc(db, "columns", columnId);
+
+  try {
+    const columnSnap = await getDoc(columnRef);
+    if (!columnSnap.exists()) {
+      throw new Error("Column not found");
+    }
+
+    const columnData = columnSnap.data();
+    const currentTasks: Task[] = columnData.tasks || [];
+
+    // Replace the task with the same taskId
+    const updatedTasks = currentTasks.map(task =>
+      task.taskId === updatedTask.taskId ? updatedTask : task
+    );
+
+    await updateDoc(columnRef, {
+      tasks: updatedTasks,
+    });
+
+    console.log("Task updated successfully");
+  } catch (error) {
+    console.error("Error updating task:", error);
+  }
+}
+
+
+
+export async function deleteTask(
+  columnId: Column["columnId"],
+  taskId: Task["taskId"]
+) {
+  const columnRef = doc(db, "columns", columnId);
+
+  try {
+    // Get the current column
+    const columnSnap = await getDoc(columnRef);
+
+    if (!columnSnap.exists()) {
+      throw new Error("Column not found");
+    }
+
+    const columnData = columnSnap.data();
+    const updatedTasks = columnData.tasks.filter(
+      (task: Task) => task.taskId !== taskId
+    );
+
+    // Update with filtered tasks
+    await updateDoc(columnRef, {
+      tasks: updatedTasks,
+    });
+
+    console.log("Task deleted successfully");
+  } catch (e) {
+    console.error("Error deleting task: ", e);
+  }
+}
+
+
 export default {
   
     login,
@@ -108,5 +169,7 @@ export default {
     logout,
     deleteColumn,
     updateColumn,
-    addTaskToColumn
+    addTaskToColumn,
+    updateTask,
+    deleteTask
   };
