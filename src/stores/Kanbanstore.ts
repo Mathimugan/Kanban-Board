@@ -19,9 +19,20 @@ export async function login(email: Registration["email"], password: Registration
       }
      // Rethrow so caller can handle it too
     }
+
+    export async function getColumns() {
+
+        const querySnapshot = await getDocs(collection(db, "columns"));
+        const columns: Column[] = [];
+        querySnapshot.forEach((doc) => {
+      
+          columns.push({ ...doc.data(), columnId: doc.id });
+        });
+        return columns;
+      }
     
 export default {
   
     login,
-   
+    getColumns
   };
