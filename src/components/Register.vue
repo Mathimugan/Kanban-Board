@@ -40,12 +40,12 @@
 </div>
 </template>
 <script setup lang="ts">
-import { registerFormSchema } from "@/schemas";
+import { registerFormSchema } from "../schemas";
 import { ref } from "vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { useRouter } from "vue-router";
-import kanbanStore from "@/stores/kanbanStore";
+import kanbanStore from "../stores/Kanbanstore"
 const registerForm = ref();
 const registerSuccess = ref("");
 const router = useRouter();

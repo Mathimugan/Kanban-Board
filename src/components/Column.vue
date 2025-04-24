@@ -78,14 +78,14 @@
   </Modal>
 </template>
 <script setup lang="ts">
-import { ACTIONS, TYPES, type Column, type TRANSFER_DATA } from "@/types";
+import { ACTIONS, TYPES, type Column, type TRANSFER_DATA } from "../types"
 import Draggable from "./common/Draggable.vue"
 import DropZone from "./common/DropZone.vue";
 import { ref } from "vue";
 import ColumnForm from "./ColumnForm.vue";
 import TaskForm from "./TaskForm.vue";
 import Modal from "./common/Modal.vue";
-import kanbanStore from "@/stores/kanbanStore";
+import kanbanStore from "../stores/Kanbanstore"
 import Task from "./Task.vue";
 import { X , Plus, Pencil} from 'lucide-vue-next'
 const props = defineProps<{

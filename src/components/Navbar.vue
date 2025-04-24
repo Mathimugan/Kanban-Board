@@ -37,7 +37,7 @@
 import { ref } from "vue";
 import ColumnForm from "./ColumnForm.vue";
 import Modal from "./common/Modal.vue";
-import { ACTIONS } from "@/types";
+import { ACTIONS, TYPES, type Column, type TRANSFER_DATA } from "../types"
 import kanbanStore from "../stores/kanbanStore";
 import { useRouter } from "vue-router";
 const router = useRouter();
