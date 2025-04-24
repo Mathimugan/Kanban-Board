@@ -28,12 +28,21 @@
     <p v-if="registerSuccess" class="text-red-600 text-center mt-2">
   {{ registerSuccess }}
 </p></div>
-    <div class="flex justify-center">
+<div class="flex justify-center">
+    <p v-if="registerError" class="text-red-600 text-center mt-2">
+  {{ registerError }}
+</p></div>
+    <div class="flex gap-2 justify-center">
   <button
     type="submit"
     class="px-4 py-2 mt-5 bg-primary text-white font-bold   rounded">
-    Submit
+    Register
   </button>
+  <button
+  type="submit" @click="navigateToLogin"
+  class="px-4 py-2 mt-5 bg-blue-500 text-white font-bold   rounded">
+  Login
+</button>
 </div>
  </Form>
 </div>
@@ -41,6 +50,7 @@
 </template>
 <script setup lang="ts">
 import { registerFormSchema } from "../schemas";
+const registerError = ref("");
 import { ref } from "vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
@@ -51,6 +61,9 @@ const registerSuccess = ref("");
 const router = useRouter();
 
 let validationSchema = toTypedSchema(registerFormSchema);
+function navigateToLogin() {
+  router.push("/login");
+}
 function onSubmit(values: any) {
   KanbanStore.register(values.email,values.password) .then(() => {
       registerSuccess.value = "User registered successfully!";
@@ -58,8 +71,18 @@ function onSubmit(values: any) {
       router.push("/login");
     }, 2000);
         })
-        .catch(() => {
-          registerSuccess.value = "User registration failed!";     
+        .catch((error) => {
+          if (typeof error === "object" && error !== null && "code" in error) {
+      const err = error as { code: string; message: string };
+      switch (err.code) {
+        case 'auth/email-already-in-use':
+        registerError.value="Email already exists !!!!."; 
+        break;
+        default:
+       registerError.value=="An error occurred during login.";
+        
+      }
+    }    
         });
 }
 </script>

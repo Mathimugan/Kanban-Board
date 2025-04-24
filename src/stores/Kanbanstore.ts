@@ -21,7 +21,7 @@ export async function register(email:Registration["email"],password:Registration
   
   } catch (error) {
     console.error("Error registering user:", error);
-   
+   throw error
   }
 
 }
