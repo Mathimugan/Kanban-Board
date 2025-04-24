@@ -10,7 +10,10 @@ export enum TYPES {
   TASK = "TASK",
   REGISTRATION = "REGISTRATION",
 }
-
+export type ColumnType = Column & {
+  isDragging?: boolean;
+  tempId?: string;
+};
 export enum ACTIONS {
   ADD_COLUMN = "ADD_COLUMN",
   UPDATE_COLUMN = "UPDATE_COLUMN",
