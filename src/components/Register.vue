@@ -45,7 +45,7 @@ import { ref } from "vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import { useRouter } from "vue-router";
-import kanbanStore from "../stores/Kanbanstore";
+import kanbanStore from "../stores/KanbanStore";
 const registerForm = ref();
 const registerSuccess = ref("");
 const router = useRouter();
