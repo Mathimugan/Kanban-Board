@@ -25,17 +25,16 @@ export async function register(email:Registration["email"],password:Registration
   }
 
 }
-export async function login(email: Registration["email"], password: Registration["password"]) {
- 
-    try {
-      const userCredential = await signInWithEmailAndPassword(getAuth(), email, password);
-     
-      return userCredential; // Can return userCredential.user if you just need the user
-    } catch (error) {
-      throw error
-      }
-     // Rethrow so caller can handle it too
-    }
+
+export async function login(email: Registration['email'], password: Registration['password']) {
+  try {
+    const userCredential = await signInWithEmailAndPassword(getAuth(), email, password)
+    return userCredential;
+  } catch (error) {
+    console.error('Login failed:', error)
+    throw error;
+  }
+}
 
     export async function getColumns() {
 
