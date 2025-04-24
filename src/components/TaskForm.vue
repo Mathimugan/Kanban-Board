@@ -35,9 +35,9 @@ import { onMounted, ref } from "vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { ErrorMessage, Field, Form } from "vee-validate";
 
-import { taskFormSchema } from "@/schemas";
-import kanbanStore from "@/stores/kanbanStore";
-import { ACTIONS, type Column, type Task } from "@/types";
+import { taskFormSchema } from "../schemas"
+import kanbanStore from "../stores/Kanbanstore"
+import { ACTIONS, type Column, type Task } from "../types";
 
 const emit = defineEmits<{
   (e: "close-modal"): void;

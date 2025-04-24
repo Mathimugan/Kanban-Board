@@ -74,11 +74,11 @@ import {
   type Task,
   ACTIONS,
   type TRANSFER_DATA,
-} from "@/types";
+} from "../types"
 import Modal from "./common/Modal.vue";
 import TaskForm from "./TaskForm.vue";
 import { ref } from "vue";
-import kanbanStore from "@/stores/kanbanStore";
+import kanbanStore from "../stores/Kanbanstore"
 import DropZone from "./common/DropZone.vue";
 import Draggable from "./common/Draggable.vue";
 import { X , Plus, Pencil} from 'lucide-vue-next'
