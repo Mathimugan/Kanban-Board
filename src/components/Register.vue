@@ -59,9 +59,7 @@ function onSubmit(values: { email: string; password: string }) {
     }, 2000);
         })
         .catch(() => {
-          registerSuccess.value = "User registration failed!";
-    
-         
+          registerSuccess.value = "User registration failed!";     
         });
 }
 </script>
