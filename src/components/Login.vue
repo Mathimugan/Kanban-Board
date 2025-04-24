@@ -70,6 +70,7 @@ async function onSubmit(values: { email: string; password: string }) {
         break;
         case 'auth/invalid-credential':
         loginError.value="Invalid email or password."; 
+        break;
         default:
        loginError.value=="An error occurred during login.";
         

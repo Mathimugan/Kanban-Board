@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useLocalStorage } from "@vueuse/core";
 import { collection,getDoc, getDocs,addDoc,updateDoc,doc,arrayRemove, arrayUnion,deleteDoc,onSnapshot } from "firebase/firestore";
 import { getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut } from "firebase/auth";
-import type { Column, Task,Registration } from "@/types";
+import type { Column, Task,Registration } from "../types"
 const auth = getAuth();
 let KEY = "KANBAN-STORE";
 export type Board = {
