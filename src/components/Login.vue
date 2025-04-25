@@ -29,15 +29,16 @@
   {{ loginError }}
 </p></div>
 <div class="flex justify-center gap-5">
-  <button
-  type="button" @click="navigateToRegister"
-  class="px-4 py-2 mt-5 bg-blue-500 text-white font-bold  rounded">
-  Register
-</button>
+ 
 <button
   type="submit"
   class="px-4 py-2 mt-5 bg-primary text-white font-bold   rounded">
   Login
+</button>
+<button
+  type="button" @click="navigateToRegister"
+  class="px-4 py-2 mt-5 bg-blue-500 text-white font-bold  rounded">
+  Register
 </button>
 </div>
 
