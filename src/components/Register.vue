@@ -76,7 +76,7 @@ function onSubmit(values: any) {
       const err = error as { code: string; message: string };
       switch (err.code) {
         case 'auth/email-already-in-use':
-        registerError.value="Email already exists !!!!."; 
+        registerError.value="Email already exists !!!!"; 
         break;
         default:
        registerError.value=="An error occurred during login.";

@@ -1,7 +1,8 @@
 {
   "projects": {
     "default": "kanboard-bd6ed",
-    "staging": "kanboard-bd6ed"
+    "staging": "kanboard-bd6ed",
+    "production": "kanboard-bd6ed"
   },
   "targets": {},
   "etags": {}
